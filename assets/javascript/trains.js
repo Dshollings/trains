@@ -50,6 +50,31 @@ $(document).ready(function() {
     var newDesination = newTrain.destination;
     var newFirstDepart = newTrain.start;
     var newFrequency = newTrain.frequency;
+    //calculations
+ 
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstDepartConverted = moment(newFirstDepart, "hh:mm").subtract(1, "years");
+    console.log(firstDepartConverted);
+
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // Difference between the times
+    var timeDiff = moment().diff(moment(firstDepartConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + timeDiff);
+
+    // Time apart (remainder)
+    var overTime = timeDiff % newFrequency;
+    console.log(overTime);
+
+    // Minute Until Train
+    var newWait = newFrequency - overTime;
+    console.log("MINUTES TILL TRAIN: " + newWait);
+
+    // Next Train
+    var newNextDeparture = moment().add(newWait, "minutes").format("hh:mm");
+    console.log("DEPARTURE TIME: " + moment(newNextDeparture).format("hh:mm"));
 
 
       $("#train-table > tbody").append(
@@ -57,10 +82,9 @@ $(document).ready(function() {
         + newRouteName + "</td><td>"
         + newDesination + "</td><td>" 
         + newFrequency +  "</td><td>" 
-        // + newNextDeparture + "</td><td>"
-        + "00:00" + "</td><td>"
-        // + newWait+ "</td><td>"
-         + "0 Minutes" + "</td><td>"
+        + newNextDeparture + "</td><td>"
+        + newWait+ "</td><td>"
+         
       );
   });
 });
