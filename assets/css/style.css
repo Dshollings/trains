@@ -1,0 +1,72 @@
+
+
+body {
+	background-color: #212121;
+}
+
+.jumbotron{
+	background-color: #212121; 
+	color: #fafafa;
+	font-family: 'BenchNine', sans-serif;
+	
+
+}
+
+.jumbotron h1 {
+	font-size: 110px;
+}
+h3 {
+	font-size: 55px;
+}
+
+
+#train-table {
+
+font-family: 'VT323', monospace;
+font-size: 2em;
+text-align: center;
+
+}
+
+.col-lg-12 {
+	border: none;
+}
+
+.panel .panel-primary, .panel-primary .panel-heading {
+	background-color: #212121;
+	font-family: 'BenchNine', sans-serif;
+	color: #fafafa;
+	border: none;
+}
+
+.panel-title {
+	background-color: #212121;
+	font-family: 'BenchNine', sans-serif;
+	color: #fafafa;
+	text-align: center;
+}
+
+.panel-body {
+
+	background-color: #212121;
+
+}
+
+label {
+	font-family: 'BenchNine', sans-serif;
+	color: #fafafa;
+}
+
+th {
+	color: #fcf585;
+	text-align: center;
+}
+
+td {
+	color: #fcf585;
+}
+
+tbody tr:hover{
+		/*color: #212121;*/
+		background-color: #A55D35;
+	}

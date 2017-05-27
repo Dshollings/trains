@@ -12,6 +12,18 @@ $(document).ready(function() {
 
   // Get a reference to the database service
   var database = firebase.database();
+
+
+  var update = function(){
+    var now = moment();
+    console.log("now =" + now)
+    console.log("now =" + moment(now).format("hh:mm"))
+    $("#time").html(moment(now).format("hh:mm"));
+  }
+
+  update();
+
+  setInterval(update, 10000);
   
   $("#add-route-btn").click(function() {
     
@@ -19,27 +31,37 @@ $(document).ready(function() {
     event.preventDefault();
 
     // what to do after clicking the button
+   
+
     var inRouteName = $("#route-name-input").val().trim();
     var inDestination = $("#destination-input").val().trim();
     var inFirstDepart = $("#first-depart-input").val().trim();
     var inFrequency = $("#frequency-input").val().trim();
-  
-    var newRoute = {
-        route: inRouteName,
-        destination: inDestination,
-        start: inFirstDepart,
-        frequency: inFrequency
-    };
-     
-    console.log(newRoute.route);
-    console.log(newRoute.destination);
-    console.log(newRoute.start);
-    console.log(newRoute.frequency);
+    if(inRouteName === "" || inDestination === "" || inFirstDepart === "" || inFrequency === ""){
+        alert("Please complete all fields");
+    }
     
-    database.ref().push(newRoute);
-    alert("Route successfully added");
+    else{
+  
+        var newRoute = {
+            route: inRouteName,
+            destination: inDestination,
+            start: inFirstDepart,
+            frequency: inFrequency
+        };
+         
+        console.log(newRoute.route);
+        console.log(newRoute.destination);
+        console.log(newRoute.start);
+        console.log(newRoute.frequency);
+        
+        database.ref().push(newRoute);
+        alert("Route successfully added");
+    }
   })
   
+  // make this into a standalone function to run with update
+
   database.ref().on("child_added", function(snapshot, prevChildKey) {
     var newTrain = snapshot.val();
     console.log("Route: " + newTrain.route);
