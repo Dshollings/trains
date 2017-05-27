@@ -66,7 +66,7 @@ td {
 	color: #fcf585;
 }
 
-tbody tr:hover{
-		/*color: #212121;*/
+.table tbody tr:hover{
+		color: #212121;
 		background-color: #A55D35;
 	}
